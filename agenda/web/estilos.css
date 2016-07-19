@@ -1,0 +1,67 @@
+.principalcabecera {
+        background-color: #FFCC00;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: xx-small;
+        color: #330033;
+        text-decoration: none;
+        text-align: justify;
+        background-position: center;
+}
+.principaldatos {
+        background-color: #FFFFCC;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: xx-small;
+        color: #330033;
+        text-decoration: none;
+        text-align: justify;
+}
+.principaldatostitulos{
+        background-color: #FFCC99;
+}
+.titulo_centrado {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 12pt;
+        text-transform: none;
+        color: #660000;
+        text-decoration: underline;
+        text-align: center;
+        font-weight: bold;
+        line-height: normal;
+}
+.titulo_centrado2 {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 10pt;
+        text-transform: none;
+        color: #660000;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold
+}
+.enlace {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: xx-small;
+        color: #330066;
+        text-decoration: none;
+        cursor: hand
+}
+.DesplegablePrincipal{
+  scrollbar-face-color:#FFFFCC;//#FF9933;
+  scrollbar-arrow-color:#FFCC00;//#FFFFCC;
+}
+body {
+  scrollbar-face-color:#FFFFCC;//#FF9933;
+  scrollbar-arrow-color:#FFCC00;//#FFFFCC;
+}
+
+select {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+}
+input {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+}
+textarea {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+}

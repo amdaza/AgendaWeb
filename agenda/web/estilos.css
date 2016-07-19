@@ -45,12 +45,12 @@
         cursor: hand
 }
 .DesplegablePrincipal{
-  scrollbar-face-color:#FFFFCC;//#FF9933;
-  scrollbar-arrow-color:#FFCC00;//#FFFFCC;
+  scrollbar-face-color:#FFFFCC;/*/#FF9933;*/
+  scrollbar-arrow-color:#FFCC00;/*/#FFFFCC;*/
 }
 body {
-  scrollbar-face-color:#FFFFCC;//#FF9933;
-  scrollbar-arrow-color:#FFCC00;//#FFFFCC;
+  scrollbar-face-color:#FFFFCC;/*/#FF9933;*/
+  scrollbar-arrow-color:#FFCC00;/*/#FFFFCC;*/
 }
 
 select {

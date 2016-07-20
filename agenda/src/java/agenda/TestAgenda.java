@@ -104,7 +104,7 @@ public class TestAgenda {
     public static void listarTodos () {
         String user;
         try {
-            user =   Leer.dato(    "Usuario ==> ");
+            user = Leer.dato(    "Usuario ==> ");
             List<AgendaBean> lista = ao.leerTodos(user);
             Iterator it = lista.iterator();
             while (it.hasNext()){

@@ -78,7 +78,7 @@ public class AgendaDAO implements IAgendaDAO {
                 "SELECT id, userag, nombre, telefono, email "
                     + "FROM agenda "
                     + "WHERE userag ="
-                    + "'" + userag + "'"
+                    + dbc.litsql(userag)
                     + dbc.endsql();
             ApW.trace(sql);
             ApW.log(sql);

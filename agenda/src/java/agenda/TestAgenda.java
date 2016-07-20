@@ -39,7 +39,7 @@ public class TestAgenda {
                          //   borrar();
                             break;
                     case 3:
-                            listar();
+                            leer();
                             break;
                     case 4:
                             listarTodos();
@@ -84,6 +84,23 @@ public class TestAgenda {
         }
     }
 */
+    public static void leer () {
+        String idString;
+        try {
+            idString =   Leer.dato(    "Id  ==> ");
+            int id = Integer.parseInt(idString);
+            AgendaBean agenda = ao.leer(id);
+            if (agenda.getId() > 0)
+                System.out.println("Registro leído: "+agenda);
+            else
+                System.out.println("Error al crear registro");
+            continuar();  
+        }
+        catch (Exception ex) {
+            ApW.error("crear",ex);
+        }
+    }
+    
     public static void listarTodos () {
         String user;
         try {

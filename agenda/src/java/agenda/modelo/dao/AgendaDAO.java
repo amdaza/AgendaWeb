@@ -62,6 +62,7 @@ public class AgendaDAO implements IAgendaDAO {
             
         } catch (Exception ex) {
             ApW.error("AgendaBean.leer", ex);
+            dbc.rollback();
         }
         
         return agenda;
@@ -97,6 +98,7 @@ public class AgendaDAO implements IAgendaDAO {
             dbc.close();
         } catch (Exception ex) {
             ApW.error("AgendaBean.leerAll", ex);
+            dbc.rollback();
         }
         return lista;
     }
@@ -125,6 +127,7 @@ public class AgendaDAO implements IAgendaDAO {
             
         } catch (Exception ex) {
             ApW.error("AgendaBean.crear", ex);
+            dbc.rollback();
         }
         
         return result;
@@ -151,6 +154,7 @@ public class AgendaDAO implements IAgendaDAO {
             
         } catch (Exception ex) {
             ApW.error("AgendaBean.borrar", ex);
+            dbc.rollback();
         }
         
         return result;
@@ -182,6 +186,7 @@ public class AgendaDAO implements IAgendaDAO {
             
         } catch (Exception ex) {
             ApW.error("AgendaBean.borrar", ex);
+            dbc.rollback();
         }
         
         return result;

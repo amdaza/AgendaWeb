@@ -33,7 +33,7 @@ public class TestAgenda {
                 opcion = Leer.datoInt("Opcion ==> ");
                 switch (opcion) {
                     case 1:
-                           // crear();
+                            crear();
                             break;
                     case 2:
                          //   borrar();
@@ -61,7 +61,7 @@ public class TestAgenda {
         }
     }
 
-    /*
+    
     public static void crear () {
         String user, nombre, email;
         long   telef;
@@ -69,12 +69,16 @@ public class TestAgenda {
             user =   Leer.dato(    "Usuario ==> ");
             nombre = Leer.dato(    "Nombre ==> ");
             telef =  Leer.datoLong("Telef. ==> ");
+            
+            // Verificar teléfono
             if (telef < 0)
                 telef=0;
+            
             email =  Leer.dato(    "E-mail ==> ");
             AgendaBean ag = new AgendaBean(user, nombre,telef,email);
-            if (ao.crear(ag))
-                System.out.println("Registro creado: "+ag);
+            int res = ao.crear(ag);
+            if (res>0)
+                System.out.println("Registro creado: "+res);
             else
                 System.out.println("Error al crear registro");
             continuar();
@@ -83,7 +87,7 @@ public class TestAgenda {
             ApW.error("crear",ex);
         }
     }
-*/
+
     public static void leer () {
         String idString;
         try {

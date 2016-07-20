@@ -8,6 +8,7 @@ package agenda.modelo.dao;
 import agenda.modelo.AgendaBean;
 import agenda.modelo.DbAgenda;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -37,10 +38,10 @@ public class AgendaDAO implements IAgendaDAO {
         AgendaBean agenda= new AgendaBean();
         
         try {
-            DbAgenda dbAgenda = new DbAgenda();
-            
+            DbAgenda dbAgenda = new DbAgenda();            
             dbc = dbAgenda.conecta(dbc);
             Connection conn = dbc.getConn();
+            
             Statement stm = conn.createStatement();
             sql =
                 "SELECT id, userag, nombre, telefono, email "
@@ -62,7 +63,8 @@ public class AgendaDAO implements IAgendaDAO {
         } catch (Exception ex) {
             ApW.error("AgendaBean.leer", ex);
         }
-            return agenda;
+        
+        return agenda;
     }
 
     @Override
@@ -70,9 +72,12 @@ public class AgendaDAO implements IAgendaDAO {
         String sql;
         ApW.log("userag: "+userag);
         List<AgendaBean> lista = new ArrayList<AgendaBean>();
+        
         try {
-            dbc = (new DbAgenda()).conecta(dbc);
+            DbAgenda dbAgenda = new DbAgenda();            
+            dbc = dbAgenda.conecta(dbc);
             Connection conn = dbc.getConn();
+            
             Statement stm = conn.createStatement();
             sql =
                 "SELECT id, userag, nombre, telefono, email "
@@ -97,8 +102,32 @@ public class AgendaDAO implements IAgendaDAO {
     }
 
     @Override
-    public int crear(AgendaBean c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int crear(AgendaBean nuevaAgenda) {
+        String sql;
+        int result = 0;
+        try {
+            DbAgenda dbAgenda = new DbAgenda();
+            dbc = dbAgenda.conecta(dbc);
+            Connection conn = dbc.getConn();
+            sql =
+                "INSERT INTO agenda (userag, nombre, telefono, email) "
+                    + "VALUES (?, ?, ?, ?) "
+                    + dbc.endsql();
+            ApW.trace(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, nuevaAgenda.getUserag());
+            ps.setString(2, nuevaAgenda.getNombre());
+            ps.setString(3, Long.toString(nuevaAgenda.getTelefono()));
+            ps.setString(4, nuevaAgenda.getEmail());
+                        
+            result = ps.executeUpdate();
+            dbc.commit();
+            
+        } catch (Exception ex) {
+            ApW.error("AgendaBean.crear", ex);
+        }
+        
+        return result;
     }
 
     @Override

@@ -157,8 +157,34 @@ public class AgendaDAO implements IAgendaDAO {
     }
 
     @Override
-    public int actualizar(AgendaBean nuevaAgenda) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int actualizar(AgendaBean agenda) {
+        String sql;
+        int result = 0;
+        try {
+            DbAgenda dbAgenda = new DbAgenda();
+            dbc = dbAgenda.conecta(dbc);
+            Connection conn = dbc.getConn();
+            
+            Statement stm = conn.createStatement();
+            sql =
+                "UPDATE agenda SET " +
+                    "userag =  " + dbc.litsql(agenda.getUserag()) +
+                    ",nombre = " + dbc.litsql(agenda.getNombre()) +
+                    ",telefono = " + Long.toString(agenda.getTelefono()) +
+                    ",email = " + dbc.litsql(agenda.getEmail()) +
+                    " WHERE id = " + agenda.getId() +
+                    dbc.endsql();
+            ApW.trace(sql);
+            ApW.log(sql);
+            result = stm.executeUpdate(sql);
+           
+            dbc.commit();
+            
+        } catch (Exception ex) {
+            ApW.error("AgendaBean.borrar", ex);
+        }
+        
+        return result;
     }
     
 }

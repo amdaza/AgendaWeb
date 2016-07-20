@@ -13,11 +13,11 @@ import java.util.List;
  * @author Alicia Daza
  */
 public interface IAgendaDAO {
-    public int crear(AgendaBean c);
+    public int crear(AgendaBean agenda);
 	
     public int borrar(int id);
 
-    public int actualizar(AgendaBean nuevaAgenda);
+    public int actualizar(AgendaBean agenda);
 
     public AgendaBean leer(int id);
     public List<AgendaBean> leerTodos(String userag);

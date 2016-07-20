@@ -29,6 +29,7 @@ public class TestAgenda {
                 System.out.println("2 - Borrar registro");
                 System.out.println("3 - Listar registro");
                 System.out.println("4 - Listar todo");
+                System.out.println("5 - Modificar");
                 System.out.println("0 - Terminar");
                 opcion = Leer.datoInt("Opcion ==> ");
                 switch (opcion) {
@@ -43,6 +44,9 @@ public class TestAgenda {
                             break;
                     case 4:
                             listarTodos();
+                            break;
+                    case 5:
+                            modificar();
                             break;
                     case 0:
                             break;
@@ -68,7 +72,7 @@ public class TestAgenda {
         try {
             user =   Leer.dato(    "Usuario ==> ");
             nombre = Leer.dato(    "Nombre ==> ");
-            telef =  Leer.datoLong("Telef. ==> ");
+            telef =  Leer.datoLong("    Telef. ==> ");
             
             // Verificar teléfono
             if (telef < 0)
@@ -132,6 +136,34 @@ public class TestAgenda {
             while (it.hasNext()){
                 System.out.println("Registros: "+it.next());
             }         
+            continuar();
+        }
+        catch (Exception ex) {
+            ApW.error("crear",ex);
+        }
+    }
+    
+    public static void modificar () {
+        String user, nombre, email;
+        int id;
+        long   telef;
+        try {
+            id =   Leer.datoInt(    "Id ==> ");
+            user =   Leer.dato(    "Usuario ==> ");
+            nombre = Leer.dato(    "Nombre ==> ");
+            telef =  Leer.datoLong("    Telef. ==> ");
+            
+            // Verificar teléfono
+            if (telef < 0)
+                telef=0;
+            
+            email =  Leer.dato(    "E-mail ==> ");
+            AgendaBean ag = new AgendaBean(id, user, nombre,telef,email);
+            int res = ao.actualizar(ag);
+            if (res>0)
+                System.out.println("Registro modificado: "+res);
+            else
+                System.out.println("Error al modificar registro");
             continuar();
         }
         catch (Exception ex) {

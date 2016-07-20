@@ -132,7 +132,28 @@ public class AgendaDAO implements IAgendaDAO {
 
     @Override
     public int borrar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql;
+        int result = 0;
+        try {
+            DbAgenda dbAgenda = new DbAgenda();
+            dbc = dbAgenda.conecta(dbc);
+            Connection conn = dbc.getConn();
+            sql =
+                "DELETE FROM agenda "
+                    + "WHERE id = ?"
+                    + dbc.endsql();
+            ApW.trace(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, String.valueOf(id));
+                        
+            result = ps.executeUpdate();
+            dbc.commit();
+            
+        } catch (Exception ex) {
+            ApW.error("AgendaBean.borrar", ex);
+        }
+        
+        return result;
     }
 
     @Override

@@ -36,7 +36,7 @@ public class TestAgenda {
                             crear();
                             break;
                     case 2:
-                         //   borrar();
+                            borrar();
                             break;
                     case 3:
                             leer();
@@ -96,6 +96,24 @@ public class TestAgenda {
             AgendaBean agenda = ao.leer(id);
             if (agenda.getId() > 0)
                 System.out.println("Registro leído: "+agenda);
+            else
+                System.out.println("Error al crear registro");
+            continuar();  
+        }
+        catch (Exception ex) {
+            ApW.error("crear",ex);
+        }
+    }
+    
+    public static void borrar () {
+        String idString;
+        int res = 0;
+        try {
+            idString =   Leer.dato(    "Id  ==> ");
+            int id = Integer.parseInt(idString);
+            res = ao.borrar(id);
+            if (res > 0)
+                System.out.println("Registro borrado: "+res);
             else
                 System.out.println("Error al crear registro");
             continuar();  

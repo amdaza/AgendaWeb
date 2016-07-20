@@ -27,6 +27,14 @@ public class AgendaBean {
         this.telefono = telefono;
         this.email = email;
     }
+    
+    public AgendaBean(String userag, String nombre, long telefono, String email) {
+        this.id = id;
+        this.userag = userag;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.email = email;
+    }
 
 
     public int getId() {

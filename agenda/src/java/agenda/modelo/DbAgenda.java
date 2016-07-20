@@ -16,7 +16,7 @@ import local.ErrorDB;
  */
 public class DbAgenda {
     	
-    private final static boolean DS = false;
+    private static boolean DS = false;
     private final static String ds = "jdbc/agenda";
 
     private static String host = null;
@@ -37,12 +37,16 @@ public class DbAgenda {
 
     public DbAgenda() {
     }
+    
+    public static void setDS (boolean b){
+        DS = b;
+    }
 
     /**
      * Reutiliza conexion existente o establece conexion.
      * Uso en inicio de transaccion
      */
-    protected boolean conecta() {
+    public static Dbcon conecta(Dbcon dbc) {
         boolean rc = true;
         try {
             if (dbc != null) {
@@ -54,20 +58,21 @@ public class DbAgenda {
                     dbc = new Dbcon(ds);
                 else
                     dbc = new Dbcon(driver, host, dbname, user, pass);
-                ApW.trace(getDbInfo());
+               // ApW.trace(getDbInfo());
             }
         }
         catch (Exception ex) {
             ApW.error("conecta", ex);
             rc = false;
         }
-        return rc;
+        return dbc;
     }
 
     /**
      * Reutiliza conexion existente o establece conexion.
      * Uso en inicio de transaccion
      */
+    /*
     protected Dbcon getDbc() {
         if (dbc == null)
             conecta();
@@ -75,7 +80,7 @@ public class DbAgenda {
             throw new ErrorDB("Error conexión DB.");
         return dbc;
     }
-
+*/
     /**
      * Devuelve conexion existente.
      */

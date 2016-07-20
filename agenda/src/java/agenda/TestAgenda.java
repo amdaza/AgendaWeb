@@ -1,6 +1,10 @@
 package agenda;
 
+import agenda.modelo.AgendaBean;
+import agenda.modelo.dao.AgendaDAO;
 import local.*;
+import java.util.List;
+import java.util.Iterator;
 
 /**
  * <p>Título: </p>
@@ -12,6 +16,9 @@ import local.*;
  */
 
 public class TestAgenda {
+    
+    static AgendaDAO ao = new AgendaDAO(false);
+    
     public static void main(String[] args) {
         int opcion;
         try {
@@ -26,16 +33,16 @@ public class TestAgenda {
                 opcion = Leer.datoInt("Opcion ==> ");
                 switch (opcion) {
                     case 1:
-                            crear();
+                           // crear();
                             break;
                     case 2:
-                            borrar();
+                         //   borrar();
                             break;
                     case 3:
                             listar();
                             break;
                     case 4:
-                            listartodo();
+                            listarTodos();
                             break;
                     case 0:
                             break;
@@ -47,35 +54,52 @@ public class TestAgenda {
 
         }
         catch (Exception ex) {
-            ApErr.error("TestAgenda",ex);
+            ApW.error("TestAgenda",ex);
         }
         finally {
             System.out.println("Aplicacion finalizada");
         }
     }
 
-    //
+    /*
     public static void crear () {
-        String nombre,email;
+        String user, nombre, email;
         long   telef;
         try {
+            user =   Leer.dato(    "Usuario ==> ");
             nombre = Leer.dato(    "Nombre ==> ");
             telef =  Leer.datoLong("Telef. ==> ");
             if (telef < 0)
                 telef=0;
             email =  Leer.dato(    "E-mail ==> ");
-            AgendaBean ag = new AgendaBean(nombre,telef,email);
-            if (ag.guardar())
+            AgendaBean ag = new AgendaBean(user, nombre,telef,email);
+            if (ao.crear(ag))
                 System.out.println("Registro creado: "+ag);
             else
                 System.out.println("Error al crear registro");
             continuar();
         }
         catch (Exception ex) {
-            ApErr.error("crear",ex);
+            ApW.error("crear",ex);
         }
     }
-
+*/
+    public static void listarTodos () {
+        String user;
+        try {
+            user =   Leer.dato(    "Usuario ==> ");
+            List<AgendaBean> lista = ao.leerTodos(user);
+            Iterator it = lista.iterator();
+            while (it.hasNext()){
+                System.out.println("Registros: "+it.next());
+            }         
+            continuar();
+        }
+        catch (Exception ex) {
+            ApW.error("crear",ex);
+        }
+    }
+    
     //
     public static void continuar () {
         String r = Leer.dato("\nPulse N para terminar u otra tecla para continuar: ");

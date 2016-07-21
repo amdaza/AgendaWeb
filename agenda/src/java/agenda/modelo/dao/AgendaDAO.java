@@ -162,6 +162,11 @@ public class AgendaDAO implements IAgendaDAO {
 
     @Override
     public int actualizar(AgendaBean agenda) {
+        if (agenda.getId() <= 0) {
+            // Sin id no se puede actualizar ningún campo
+            return -1;
+        }
+        
         String sql;
         int result = 0;
         try {
@@ -170,13 +175,25 @@ public class AgendaDAO implements IAgendaDAO {
             Connection conn = dbc.getConn();
             
             Statement stm = conn.createStatement();
-            sql =
-                "UPDATE agenda SET " +
-                    "userag =  " + dbc.litsql(agenda.getUserag()) +
-                    ",nombre = " + dbc.litsql(agenda.getNombre()) +
-                    ",telefono = " + Long.toString(agenda.getTelefono()) +
-                    ",email = " + dbc.litsql(agenda.getEmail()) +
-                    " WHERE id = " + agenda.getId() +
+            sql = "UPDATE agenda SET ";
+            
+            if (agenda.getUserag() != null) {
+                sql += "userag =  " + dbc.litsql(agenda.getUserag());
+            }
+            
+            if (agenda.getNombre() != null) {
+                sql += ",nombre = " + dbc.litsql(agenda.getNombre());
+            }
+            
+            if(agenda.getTelefono() > 0) {
+                sql += ",telefono = " + Long.toString(agenda.getTelefono());
+            }
+            
+            if (agenda.getEmail() != null) {
+                sql += ",email = " + dbc.litsql(agenda.getEmail());
+            }
+            
+            sql += " WHERE id = " + agenda.getId() +
                     dbc.endsql();
             ApW.trace(sql);
             ApW.log(sql);

@@ -58,7 +58,7 @@ public class DbAgenda {
                     dbc = new Dbcon(ds);
                 else
                     dbc = new Dbcon(driver, host, dbname, user, pass);
-               // ApW.trace(getDbInfo());
+                //ApW.trace(getDbInfo());
             }
         }
         catch (Exception ex) {
@@ -68,19 +68,6 @@ public class DbAgenda {
         return dbc;
     }
 
-    /**
-     * Reutiliza conexion existente o establece conexion.
-     * Uso en inicio de transaccion
-     */
-    /*
-    protected Dbcon getDbc() {
-        if (dbc == null)
-            conecta();
-        if (dbc == null)
-            throw new ErrorDB("Error conexión DB.");
-        return dbc;
-    }
-*/
     /**
      * Devuelve conexion existente.
      */

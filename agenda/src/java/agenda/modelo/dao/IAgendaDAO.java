@@ -14,11 +14,9 @@ import java.util.List;
  */
 public interface IAgendaDAO {
     public int crear(AgendaBean agenda);
-	
     public int borrar(int id);
-
     public int actualizar(AgendaBean agenda);
-
     public AgendaBean leer(int id);
     public List<AgendaBean> leerTodos(String userag);
+    public List<AgendaBean> buscar(String busqueda);
 }

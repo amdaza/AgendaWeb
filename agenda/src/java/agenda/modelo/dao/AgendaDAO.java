@@ -208,5 +208,40 @@ public class AgendaDAO implements IAgendaDAO {
         
         return result;
     }
+
+    @Override
+    public List<AgendaBean> buscar(String busqueda) {
+        String sql;
+        List<AgendaBean> lista = new ArrayList<AgendaBean>();
+        
+        try {
+            DbAgenda dbAgenda = new DbAgenda();            
+            dbc = dbAgenda.conecta(dbc);
+            Connection conn = dbc.getConn();
+            
+            Statement stm = conn.createStatement();
+            sql =
+                "SELECT id, userag, nombre, telefono, email "
+                    + "FROM agenda "
+                    + "WHERE userag LIKE " + "'%"+busqueda+"%'"
+                    + " OR nombre LIKE " + "'%"+busqueda+"%'"
+                    + " OR email LIKE " + "'%"+busqueda+"%'"
+                    + dbc.endsql();
+            ApW.trace(sql);
+            ApW.log(sql);
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                AgendaBean agenda = new AgendaBean(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), Long.parseLong(rs.getString(4)), rs.getString(5));
+                lista.add(agenda);
+            }
+            dbc.commit();
+            dbc.close();
+        } catch (Exception ex) {
+            ApW.error("AgendaBean.leerAll", ex);
+            dbc.rollback();
+        }
+        return lista;
+    }
     
 }

@@ -30,6 +30,7 @@ public class TestAgenda {
                 System.out.println("3 - Listar registro");
                 System.out.println("4 - Listar todo");
                 System.out.println("5 - Modificar");
+                System.out.println("6 - Buscar");
                 System.out.println("0 - Terminar");
                 opcion = Leer.datoInt("Opcion ==> ");
                 switch (opcion) {
@@ -47,6 +48,9 @@ public class TestAgenda {
                             break;
                     case 5:
                             modificar();
+                            break;
+                    case 6:
+                            buscar();
                             break;
                     case 0:
                             break;
@@ -105,7 +109,7 @@ public class TestAgenda {
             continuar();  
         }
         catch (Exception ex) {
-            ApW.error("crear",ex);
+            ApW.error("leer",ex);
         }
     }
     
@@ -123,7 +127,7 @@ public class TestAgenda {
             continuar();  
         }
         catch (Exception ex) {
-            ApW.error("crear",ex);
+            ApW.error("borrar",ex);
         }
     }
     
@@ -139,7 +143,7 @@ public class TestAgenda {
             continuar();
         }
         catch (Exception ex) {
-            ApW.error("crear",ex);
+            ApW.error("listarTodos",ex);
         }
     }
     
@@ -151,7 +155,7 @@ public class TestAgenda {
             id =   Leer.datoInt(    "Id ==> ");
             user =   Leer.dato(    "Usuario ==> ");
             nombre = Leer.dato(    "Nombre ==> ");
-            telef =  Leer.datoLong("    Telef. ==> ");
+            telef =  Leer.datoLong("Telef. ==> ");
             
             // Verificar teléfono
             if (telef < 0)
@@ -167,7 +171,23 @@ public class TestAgenda {
             continuar();
         }
         catch (Exception ex) {
-            ApW.error("crear",ex);
+            ApW.error("modificar",ex);
+        }
+    }
+    
+    public static void buscar () {
+        String busqueda;
+        try {
+            busqueda =   Leer.dato(    "String de busqueda  ==> ");
+            List<AgendaBean> lista = ao.buscar(busqueda);
+            Iterator it = lista.iterator();
+            while (it.hasNext()){
+                System.out.println("Resultados: "+it.next());
+            }         
+            continuar();
+        }
+        catch (Exception ex) {
+            ApW.error("buscar",ex);
         }
     }
     

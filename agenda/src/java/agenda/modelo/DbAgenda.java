@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package agenda.modelo;
 
 import java.sql.Connection;
@@ -11,8 +7,11 @@ import local.Dbcon;
 import local.ErrorDB;
 
 /**
- *
- * @author cas
+ * <p>Título: DbAgenda</p>
+ * <p>Descripción: Conexión con la base de datos de Agenda</p>
+ * <p>Copyright: Copyright (c) curso Java EE</p>
+ * @author Alicia Daza
+ * @version 1.0
  */
 public class DbAgenda {
     	

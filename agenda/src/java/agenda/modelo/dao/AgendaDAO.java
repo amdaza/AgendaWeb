@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package agenda.modelo.dao;
 
 import agenda.modelo.AgendaBean;
@@ -17,8 +13,11 @@ import local.ApW;
 import local.Dbcon;
 
 /**
- *
+ * <p>Título: AgendaDAO</p>
+ * <p>Descripción: Acciones para la base de datos de Agenda</p>
+ * <p>Copyright: Copyright (c) curso Java EE</p>
  * @author Alicia Daza
+ * @version 1.0
  */
 public class AgendaDAO implements IAgendaDAO {
 

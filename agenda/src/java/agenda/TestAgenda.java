@@ -7,11 +7,10 @@ import java.util.List;
 import java.util.Iterator;
 
 /**
- * <p>Título: </p>
- * <p>Descripción: </p>
+ * <p>Título: Test Agenda</p>
+ * <p>Descripción: Pruebas para el funcionamiento de AgendaBean</p>
  * <p>Copyright: Copyright (c) curso Java EE</p>
- * <p>Empresa: </p>
- * @author sin atribuir
+ * @author Alicia Daza
  * @version 1.0
  */
 

@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package agenda.modelo;
 
 /**
- *
- * @author cas
+ * <p>Título: AgendaBean</p>
+ * <p>Descripción: Bean con la información de un campo de la agenda</p>
+ * <p>Copyright: Copyright (c) curso Java EE</p>
+ * @author Alicia Daza
+ * @version 1.0
  */
 public class AgendaBean {
     

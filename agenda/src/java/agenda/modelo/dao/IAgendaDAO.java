@@ -1,16 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package agenda.modelo.dao;
 
 import agenda.modelo.AgendaBean;
 import java.util.List;
 
 /**
- *
+ * <p>Título: IAgendaDAO</p>
+ * <p>Descripción: Interfaz para AgendaDAO</p>
+ * <p>Copyright: Copyright (c) curso Java EE</p>
  * @author Alicia Daza
+ * @version 1.0
  */
 public interface IAgendaDAO {
     public int crear(AgendaBean agenda);

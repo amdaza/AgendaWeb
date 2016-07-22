@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta content="Curso Java EE">
+<link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body>
+    
+<script>
+    function sendW () {
+        document.welcome.action="lista.do";
+        document.welcome.submit();
+    }
+</script>    
+    
+<center>
+   <br>
+   <h2>Bienvenido</h2>
+   <p class="titulo_centrado2">Pulse Agenda para visualizar datos<form name="welcome" method="post">
+   <br>
+    <P>
+    <input type="button" value=" Agenda " onClick="javascript:sendW()">&nbsp;
+   </form>
+ </center>
+</body>
+
+</html>
